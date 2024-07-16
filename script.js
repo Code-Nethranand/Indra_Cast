@@ -4,19 +4,20 @@ const weatherBox = document.querySelector('.weather-box');
 const weatherDetails = document.querySelector('.weather-details');
 const error404 = document.querySelector('.not-found');
 const cityHide = document.querySelector('.city-hide');
-// console.log(search)
+
+// console.log(elCloneInfoHumidity)
+
 const fetchData =async()=>{
     const APIKey ='05f73b7b5b8440f0f61fec0f584d0cd9';
     const city = document.querySelector('.search-box input').value;
     const res =await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`)
-
     const json =await res.json()
 
     if (city == '')
         return;
  
    
-    // console.log(json);
+    console.log(json);
         if(json.cod == '404'){
             container.style.height = '400px';
             weatherBox.classList.remove('active');
@@ -96,6 +97,7 @@ const fetchData =async()=>{
             const elCloneInfoWeather = infoWeather.cloneNode(true);
             const elCloneInfoHumidity = infoHumidity.cloneNode(true);
             const elCloneInfoWind = infoWind.cloneNode(true);
+
             // console.log(elCloneInfoHumidity)
 
             elCloneInfoWeather.id = 'clone-info-weather';
@@ -139,18 +141,43 @@ const fetchData =async()=>{
         }
     
     }
+
+
+    //Map integration
+    
+    const initMap =async()=>{
+        const APIKey ='05f73b7b5b8440f0f61fec0f584d0cd9';
+        const city = document.querySelector('.search-box input').value;
+        const res =await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`)
+        const json =await res.json()
+        const { Map } = await google.maps.importLibrary("maps");
+    
+        map = new Map(document.getElementById("map"), {
+        center: { lat: json.coord.lat, lng: json.coord.lon },
+        zoom: 8,
+        labels:true
+        });
+    
+        new google.maps.Marker({
+        position: { lat: json.coord.lat, lng: json.coord.lon },
+        map: map,
+        animation: google.maps.Animation.DROP
+        })
+    }
+
     const submit = document.querySelector(".hello")
     // console.log(submit)
     submit.addEventListener("submit",(e)=>{
         e.preventDefault();
         // console.log(e)
         fetchData();
+        initMap();
     })
 
 
 
 search.addEventListener('click',() => {
     fetchData();
-    
+    initMap();
 
 });

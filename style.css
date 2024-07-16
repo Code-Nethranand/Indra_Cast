@@ -31,6 +31,24 @@ body {
   transition: height .6s ease;
 }
 
+.map_container {
+  position: relative;
+  width: 400px;
+  height: 555px;
+  margin: 70px;
+  background: rgba(255, 255, 255, .1);
+  backdrop-filter: blur(30px);
+  border: 2px solid rgba(255, 255, 255, .2);
+  border-radius: 16px;
+  padding: 20px;
+  color: #fff;
+  transition: height .6s ease;
+}
+
+#map {
+  height: 100%;
+}
+
 .search-box {
   position: relative;
   width: 100%;
