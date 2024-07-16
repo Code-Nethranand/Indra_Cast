@@ -5,16 +5,18 @@ const weatherDetails = document.querySelector('.weather-details');
 const error404 = document.querySelector('.not-found');
 const cityHide = document.querySelector('.city-hide');
 // console.log(search)
-
-search.addEventListener('click',() => {
+const fetchData =async()=>{
     const APIKey ='05f73b7b5b8440f0f61fec0f584d0cd9';
     const city = document.querySelector('.search-box input').value;
+    const res =await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`)
+
+    const json =await res.json()
 
     if (city == '')
         return;
  
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`).then(response => response.json()).then(json =>{
-    console.log(json);
+   
+    // console.log(json);
         if(json.cod == '404'){
             container.style.height = '400px';
             weatherBox.classList.remove('active');
@@ -33,8 +35,8 @@ search.addEventListener('click',() => {
         const image = document.querySelector('.weather-box img');
         const temperature = document.querySelector('.weather-box .temperature');
         const description = document.querySelector('.weather-box .description');
-        const humidity = document.querySelector('.weather-box .humidity span');
-        const wind = document.querySelector('.weather-box .wind span');
+        const humidity = document.querySelector('.humidity-text');
+        const wind = document.querySelector('.wind-text');
 
         if (cityHide.textContent === city) {
             return;
@@ -82,8 +84,10 @@ search.addEventListener('click',() => {
             
             temperature.innerHTML = `${parseInt(json?.main?.temp)}<span>°C</span>`;
             description.innerHTML = `${json.weather[0].description}`;
-            humidity.innerHTML = `${json?.main?.humidity}%`;
-            wind.innerHTML = `${parseInt(json?.wind?.speed)}Km/h`;
+            // console.log(json?.main?.humidity)
+            if(json?.main?.humidity) humidity.innerHTML = `${json?.main?.humidity}%`;
+            // console.log(json?.wind?.speed)
+            wind.innerHTML = `${json?.wind?.speed}Km/h`;
 
             const infoWeather = document.querySelector('.info-weather');
             const infoHumidity = document.querySelector('.info-humidity');
@@ -92,7 +96,7 @@ search.addEventListener('click',() => {
             const elCloneInfoWeather = infoWeather.cloneNode(true);
             const elCloneInfoHumidity = infoHumidity.cloneNode(true);
             const elCloneInfoWind = infoWind.cloneNode(true);
-            console.log(elCloneInfoHumidity)
+            // console.log(elCloneInfoHumidity)
 
             elCloneInfoWeather.id = 'clone-info-weather';
             elCloneInfoWeather.classList.add('active-clone');
@@ -134,6 +138,19 @@ search.addEventListener('click',() => {
 
         }
     
-    });
+    }
+    const submit = document.querySelector(".hello")
+    // console.log(submit)
+    submit.addEventListener("submit",(e)=>{
+        e.preventDefault();
+        // console.log(e)
+        fetchData();
+    })
+
+
+
+search.addEventListener('click',() => {
+    fetchData();
+    
 
 });
