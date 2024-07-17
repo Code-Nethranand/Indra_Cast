@@ -3,6 +3,7 @@ const search = document.querySelector('.search-box button');
 const weatherBox = document.querySelector('.weather-box');
 const weatherDetails = document.querySelector('.weather-details');
 const error404 = document.querySelector('.not-found');
+const maperror404 = document.querySelector('.mapnot-found');
 const cityHide = document.querySelector('.city-hide');
 
 const fetchData = async () => {
@@ -104,27 +105,43 @@ const fetchData = async () => {
 // Map integration
 const initMap = async (json) => {
     const mapContainer = document.getElementById("map");
+    const divmapContainer = document.querySelector(".map_container");
 
     if (json.cod == '404') {
         if (mapContainer.firstChild) {
             mapContainer.removeChild(mapContainer.firstChild); // Remove existing map data
+           
         }
+        divmapContainer.style.height = '400px';
+        maperror404.classList.add('active');
         return;
     }
 
-    const { Map } = await google.maps.importLibrary("maps");
+    else {
+        divmapContainer.style.height = '500px';
+        maperror404.classList.remove('active');
+        
+        setTimeout(() => {
+            mapContainer.classList.remove('active');
+        }, 2500);
 
-    const map = new Map(mapContainer, {
-        center: { lat: json.coord.lat, lng: json.coord.lon },
-        zoom: 8,
-        labels: true
-    });
+        const { Map } = await google.maps.importLibrary("maps");
+        
+        const map = new Map(mapContainer, {
+            center: { lat: json.coord.lat, lng: json.coord.lon },
+            zoom: 8,
+            labels: true
+        });
 
-    new google.maps.Marker({
-        position: { lat: json.coord.lat, lng: json.coord.lon },
-        map: map,
-        animation: google.maps.Animation.DROP
-    });
+        new google.maps.Marker({
+            position: { lat: json.coord.lat, lng: json.coord.lon },
+            map: map,
+            animation: google.maps.Animation.DROP
+        });
+
+        // mapContainer.style.height = '500px';
+        
+    }
 }
 
 const submit = document.querySelector(".hello");
