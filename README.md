@@ -12,7 +12,11 @@ Map
 https://www.google.com/maps
 ```
 
-News API
+Requirements
 ```
-https://mediastack.com/
+asgiref==3.8.1
+Django==4.2.14
+sqlparse==0.5.1
+typing_extensions==4.12.2
+tzdata==2024.1
 ```
