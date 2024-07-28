@@ -23,7 +23,8 @@ typing_extensions==4.12.2
 tzdata==2024.1
 ```
 
-Preview
+Previews
+
 ![Preview1](/Screenshots/Weather%20Forecast.png)
 ![Preview2](/Screenshots/Invalid%20Input.png)
 ![Preview2](/Screenshots/Compare%20Page.png)
