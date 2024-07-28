@@ -31,5 +31,5 @@ Previews
 ![Preview2](/Screenshots/Invalid%20Input.png)
 ![Preview2](/Screenshots/Compare%20Page.png)
 ![Preview3](/Screenshots/Weather%20Compare.png)
-![Preview4](/Screenshots/About%20Page.png)
+![Preview4](/Screenshots/About_Page.png)
 ![Preview5](/Screenshots/Contact%20Page.png)
