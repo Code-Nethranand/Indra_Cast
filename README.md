@@ -27,9 +27,20 @@ tzdata==2024.1
 
 Previews
 
+Homepage:
 ![Preview1](/Screenshots/Weather%20Forecast.png)
+
+Invalid Input:
 ![Preview2](/Screenshots/Invalid%20Input.png)
+
+Compare:
 ![Preview2](/Screenshots/Compare%20Page.png)
+
+Weather Compare:
 ![Preview3](/Screenshots/Weather%20Compare.png)
+
+About page:
 ![Preview4](/Screenshots/About_Page.png)
+
+Contact Page:
 ![Preview5](/Screenshots/Contact%20Page.png)
