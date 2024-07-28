@@ -6,4 +6,6 @@ def about(request):
     return render(request, 'about.html')
 def contact(request):
     return render(request, 'contact.html')
+def compare(request):
+    return render(request, 'compare.html')
 

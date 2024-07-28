@@ -5,16 +5,22 @@ const weatherDetails = document.querySelector('.weather-details');
 const error404 = document.querySelector('.not-found');
 const maperror404 = document.querySelector('.mapnot-found');
 const cityHide = document.querySelector('.city-hide');
+// const compare = document.querySelector('#compare');
+// compare.addEventListener("click",()=>{
+   
+// })
 
 const fetchData = async () => {
     const APIKey = '05f73b7b5b8440f0f61fec0f584d0cd9';
     const city = document.querySelector('.search-box input').value;
+    localStorage.setItem("city", city)
 
     if (city == '')
         return;
 
     const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`);
     const json = await res.json();
+    console.log("json")
 
     if (json.cod == '404') {
         container.style.height = '400px';
@@ -24,7 +30,9 @@ const fetchData = async () => {
         return json;  // Return json to use in initMap function
     }
 
+    
     console.log(json);
+   
 
     const image = document.querySelector('.weather-box img');
     const temperature = document.querySelector('.weather-box .temperature');
@@ -155,3 +163,5 @@ search.addEventListener('click', async () => {
     const json = await fetchData();
     initMap(json);
 });
+
+

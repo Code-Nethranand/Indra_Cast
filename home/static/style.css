@@ -20,6 +20,16 @@ body {
   overflow: hidden;  
 }
 
+.compare{
+  background-color: white;
+}
+/* .compare{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 100%;
+} */
+
 /* Navbar Styles */
 .navbar {
     width: 100%;
@@ -37,7 +47,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 400px;
+    width: 500px;
     height: 40px;
     background: rgba(255, 255, 255, .1);
     backdrop-filter: blur(10px);
@@ -93,6 +103,14 @@ body {
   transition: height .6s ease;
 }
 
+.bar {
+  height: 100%;
+  width: 40%;
+  padding: 20px;
+}
+
+
+
 .map_container {
   position: relative;
   width: 400px;
@@ -109,6 +127,16 @@ body {
 
 #map {
   height: 100%;
+}
+
+#graphs {
+  display: none;
+  height: 0;
+  transition: height .1s ease;
+}
+#graphs.show {
+  height: 500px; /* Adjust based on the actual height needed */
+  transition: height .1s ease;
 }
 
 .search-box {
@@ -137,7 +165,7 @@ body {
   color: #fff;
   font-weight: 500;
   text-transform: uppercase;
-  padding: 0 48px 0 42px;
+  padding: 0 90px 0 42px;
 }
 
 .search-box input::placeholder {
@@ -155,7 +183,7 @@ body {
   outline: none;
   font-size: 28px;
   color: #fff;
-  padding: 1 40px 0 5px;
+  padding: 1 3px 0 5px;
   cursor: pointer;
 }
 
