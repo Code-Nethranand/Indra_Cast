@@ -40,7 +40,7 @@ Weather Compare:
 ![Preview3](/Screenshots/Weather%20Compare.png)
 
 About page:
-![Preview4](/Screenshots/About%20Page.png)
+![Preview4](/Screenshots/About_Page.png)
 
 Contact Page:
-![Preview5](/Screenshots/Contact%20Page.png)
+![Preview5](/Screenshots/Contact_Page.png)
