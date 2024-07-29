@@ -1,4 +1,4 @@
-#Welcome to IndraCast
+Welcome to IndraCast
 
 This web application integrates comprehensive weather data and mapping functionalities to provide users with accurate and real-time weather information. The application leverages advanced weather APIs to offer current conditions and forecasts. Additionally, it incorporates map integration to visually display geospatial data. Users can access detailed weather information for specific locations, enhancing their ability to plan and make informed decisions. The app's user-friendly interface ensures a seamless experience, catering to both casual users and weather enthusiasts.
 
